@@ -21,5 +21,5 @@ A full-stack web application for collecting and visualizing movie ratings. Users
 
 ---
 
-## 📁 Project Structure
-
+## Project Link
+https://movie-ratings-2oie.onrender.com 
