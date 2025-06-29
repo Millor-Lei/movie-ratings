@@ -1,4 +1,4 @@
-let chartInstance;  // Reference to the Chart.js chart
+let chartInstance; 
 
 // Fetch ratings and update chart
 async function updateChart() {
