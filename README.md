@@ -1,14 +1,14 @@
-# 🎬 Movie Ratings Dashboard
+# Movie Ratings Dashboard
 
 A full-stack web application for collecting and visualizing movie ratings. Users can submit movie titles and ratings through a modal form. Ratings are stored on the server using a Flask backend and saved in a JSON file. A dynamic bar chart shows rating distribution using Chart.js.
 
 ---
 
-## 🧱 Tech Stack
+## Tech Stack
 
 - **Frontend**
   - HTML + CSS (custom styling)
-  - Vanilla JavaScript
+  - JavaScript
   - Modal-based rating form with input validation
 
 - **Backend**
