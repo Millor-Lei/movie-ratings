@@ -1,27 +1,22 @@
-let chartInstance; 
+let chartInstance;
 
-// Fetch ratings and update chart
 async function updateChart() {
   try {
     const response = await fetch('/api/ratings');
     const data = await response.json();
 
     const ratingCounts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
-    data.forEach(entry => {
-      const rating = parseInt(entry.rating);
-      if (ratingCounts.hasOwnProperty(rating)) {
-        ratingCounts[rating]++;
-      }
+    data.forEach(({ rating }) => {
+      const r = parseInt(rating);
+      if (ratingCounts[r]) ratingCounts[r]++;
     });
 
     const chartData = Object.values(ratingCounts);
 
     if (chartInstance) {
-      // If chart already exists, update it
       chartInstance.data.datasets[0].data = chartData;
       chartInstance.update();
     } else {
-      // Create chart for the first time
       const ctx = document.getElementById('ratingChart').getContext('2d');
       chartInstance = new Chart(ctx, {
         type: 'bar',
@@ -40,16 +35,10 @@ async function updateChart() {
           scales: {
             y: {
               beginAtZero: true,
-              title: {
-                display: true,
-                text: 'Count'
-              }
+              title: { display: true, text: 'Count' }
             },
             x: {
-              title: {
-                display: true,
-                text: 'Rating'
-              }
+              title: { display: true, text: 'Rating' }
             }
           }
         }
@@ -60,5 +49,4 @@ async function updateChart() {
   }
 }
 
-// Run once on page load
 document.addEventListener("DOMContentLoaded", updateChart);
