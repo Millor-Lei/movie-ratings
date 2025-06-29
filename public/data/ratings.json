@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Inception",
+    "rating": 4.8,
+    "comments": "Amazing concept and visuals."
+  },
+  {
+    "title": "The Matrix",
+    "rating": 4.7,
+    "comments": "A revolutionary film for its time."
+  },
+  {
+    "title": "Titanic",
+    "rating": 4.6,
+    "comments": "A timeless love story."
+  },
+  {
+    "title": "La La Land",
+    "rating": 4.3,
+    "comments": "Beautiful music and cinematography."
+  },
+  {
+    "title": "The Dark Knight",
+    "rating": 4.9,
+    "comments": "Best Batman film ever made."
+  },
+  {
+    "title": "Avengers: Endgame",
+    "rating": 4.5,
+    "comments": "Epic conclusion to the Marvel saga."
+  },
+  {
+    "title": "Coco",
+    "rating": 4.7,
+    "comments": "Heartwarming and visually stunning."
+  },
+  {
+    "title": "Toy Story",
+    "rating": 4.4,
+    "comments": "Childhood favorite with emotional depth."
+  }
+]

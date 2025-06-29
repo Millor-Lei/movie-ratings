@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movie Ratings</title>
+  <!-- Link to CSS file in static folder -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- Modal for adding new rating -->
+<div id="ratingModal" class="modal">
+  <div class="modal-content">
+    <h2>Add a New Rating</h2>
+    <form id="ratingForm">
+      <label for="title">Movie Title:</label>
+      <input type="text" id="title" required />
+
+      <label for="rating">Rating (1-5):</label>
+      <input type="number" id="rating" min="1" max="5" required />
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<!-- Button to open the modal -->
+<button onclick="openModal()">Add New Rating</button>
+
+<!-- Modal and form logic -->
+<script>
+  function openModal() {
+    document.getElementById('ratingModal').style.display = 'block';
+  }
+
+  // Submit form data to backend
+  document.getElementById('ratingForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const title = document.getElementById('title').value;
+    const rating = document.getElementById('rating').value;
+
+    // Send POST request to backend
+    const response = await fetch('/api/ratings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title, rating })
+    });
+
+    const result = await response.json();
+    alert(result.message);
+
+    // Close modal and clear form
+    document.getElementById('ratingModal').style.display = 'none';
+    document.getElementById('ratingForm').reset();
+
+    // Refresh chart
+    if (typeof updateChart === 'function') {
+      updateChart();
+    }
+  });
+</script>
+
+<!-- Chart.js library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Custom chart logic -->
+<script src="{{ url_for('static', filename='charts.js') }}"></script>
+
+<!-- Canvas for rating chart -->
+<canvas id="ratingChart" width="400" height="200"></canvas>
+
+</body>
+</html>
